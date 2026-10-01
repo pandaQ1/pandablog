@@ -5,29 +5,48 @@ title = "Panda Blog"
 copyright = "© 2026 Panda Blog"
 pagination.pagerSize = 10
 enableEmoji = true
-enableGitInfo = false
 summaryLength = 70
 
 [taxonomies]
   tag = "tags"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [menus]
   [[menus.main]]
-    name = "首页"
+    name = "文章"
     pageRef = "/"
     weight = 10
   [[menus.main]]
+    name = "说说"
+    pageRef = "/shuoshuo/"
+    weight = 20
+  [[menus.main]]
+    name = "留言板"
+    pageRef = "/guestbook/"
+    weight = 30
+  [[menus.main]]
     name = "归档"
     pageRef = "/archives/"
-    weight = 20
+    weight = 40
+  [[menus.main]]
+    name = "友情链接"
+    pageRef = "/friends/"
+    weight = 50
   [[menus.main]]
     name = "关于"
     pageRef = "/about/"
-    weight = 30
+    weight = 60
 
 [params]
   description = "Panda 的个人博客 - 记录生活与技术"
   author = "Panda"
+  avatar = "images/avatar.png"
+  background = "images/bg.png"
+  # 社交链接（不需要的可删除）
+  # bilibili = "https://space.bilibili.com/你的ID"
+  # github = "https://github.com/pandaQ1"
   # 开启 giscus 评论（详见 README，先到 https://giscus.app 生成参数）
   # [params.giscus]
   #   repo = "pandaQ1/pandablog"

@@ -1,0 +1,15 @@
+{{- $index := slice -}}
+{{- range where .Site.RegularPages "Type" "posts" -}}
+  {{- $tags := "" -}}
+  {{- range .GetTerms "tags" -}}
+    {{- $tags = printf "%s #%s" $tags .LinkTitle -}}
+  {{- end -}}
+  {{- $index = $index | append (dict
+      "title" .Title
+      "url" .RelPermalink
+      "date" (.Date.Format "2006-01-02")
+      "summary" (.Summary | plainify | truncate 120)
+      "tags" (trim $tags " ")
+  ) -}}
+{{- end -}}
+{{- $index | jsonify -}}

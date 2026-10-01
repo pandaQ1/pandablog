@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="search-box glass">
+  <input type="search" class="search-input" id="search-input" placeholder="搜索文章…" autofocus>
+  <p class="search-hint" id="search-hint">输入关键词，回车或实时搜索</p>
+</div>
+<div id="search-results"></div>
+
+<script>
+(function () {
+  var input = document.getElementById('search-input');
+  var hint = document.getElementById('search-hint');
+  var results = document.getElementById('search-results');
+  var index = null;
+
+  fetch('{{ "index.json" | relURL }}')
+    .then(function (r) { return r.json(); })
+    .then(function (data) { index = data; });
+
+  function esc(s) {
+    return s.replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    results.innerHTML = '';
+    if (!q || !index) return;
+    var hits = index.filter(function (p) {
+      return (p.title + ' ' + p.summary + ' ' + p.tags).toLowerCase().indexOf(q) !== -1;
+    });
+    hint.textContent = hits.length ? '找到 ' + hits.length + ' 条结果' : '没有找到相关内容';
+    hits.forEach(function (p) {
+      var el = document.createElement('article');
+      el.className = 'search-result glass';
+      el.innerHTML = '<h3><a href="' + p.url + '">' + esc(p.title) +
+        '</a></h3><div class="post-meta"><time>' + p.date + '</time>' +
+        (p.tags ? ' <span class="tag">#' + esc(p.tags) + '</span>' : '') +
+        '</div><p class="post-summary">' + esc(p.summary) + '</p>';
+      results.appendChild(el);
+    });
+  });
+})();
+</script>
+{{ end }}

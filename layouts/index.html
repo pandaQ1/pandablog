@@ -1,13 +1,14 @@
 {{ define "main" }}
-<section class="hero">
-  <h1>你好，我是 {{ .Site.Params.author }} 🐼</h1>
+<section class="hero glass">
+  <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}" class="hero-avatar">
+  <h1>{{ .Site.Params.author }}</h1>
   <p>{{ .Site.Params.description }}</p>
 </section>
 
 {{ $pages := where .Site.RegularPages "Type" "posts" }}
 {{ $paginator := .Paginate $pages }}
 {{ range $paginator.Pages }}
-<article class="post-card">
+<article class="post-card glass">
   <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <div class="post-meta">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
@@ -19,7 +20,7 @@
   <p class="post-summary">{{ .Summary | plainify }}</p>
 </article>
 {{ else }}
-<p>还没有文章，去 <code>content/posts/</code> 里创建你的第一篇 Markdown 吧！</p>
+<article class="post-card glass"><p>还没有文章，去 <code>content/posts/</code> 里创建你的第一篇 Markdown 吧！</p></article>
 {{ end }}
 
 {{ if gt $paginator.TotalPages 1 }}

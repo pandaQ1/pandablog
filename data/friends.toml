@@ -1,0 +1,10 @@
+# 友情链接：直接在下面添加，格式：
+# [[friends]]
+# name = "站点名"
+# url  = "https://example.com"
+# desc = "一句话介绍"
+
+[[friends]]
+name = "Hugo"
+url = "https://gohugo.io/"
+desc = "本站使用的静态网站生成器"

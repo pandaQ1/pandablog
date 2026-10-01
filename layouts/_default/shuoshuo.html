@@ -1,0 +1,12 @@
+{{ define "main" }}
+<h1 class="page-title glass">说说</h1>
+{{ range sort hugo.Data.shuoshuo.shuoshuo "date" "desc" }}
+<article class="shuoshuo-item glass">
+  <time>{{ time .date | time.Format "2006-01-02 15:04" }}</time>
+  <p class="shuoshuo-content">{{ .content }}</p>
+</article>
+{{ else }}
+<article class="shuoshuo-item glass"><p>还没有说说，在 <code>data/shuoshuo.toml</code> 里添加吧。</p></article>
+{{ end }}
+{{ partial "comments.html" . }}
+{{ end }}

@@ -2,6 +2,8 @@
 <html lang="{{ .Site.Language.LanguageCode }}">
 {{- partial "head.html" . -}}
 <body>
+  <div class="bg-layer" style="background-image: url('{{ .Site.Params.background | relURL }}')"></div>
+  <div class="bg-mask"></div>
   {{- partial "header.html" . -}}
   <main class="container">
     {{- block "main" . }}{{ end -}}

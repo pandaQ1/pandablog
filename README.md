@@ -29,6 +29,27 @@ git push
 
 推送后 GitHub Actions 会自动构建并发布，约 1 分钟后刷新网页即可看到新文章。
 
+## 发布说说
+
+编辑 `data/shuoshuo.toml`，在文件顶部添加一条即可：
+
+```toml
+[[shuoshuo]]
+date = 2026-10-02T18:00:00+08:00
+content = "今天想说的话……"
+```
+
+## 添加友情链接
+
+编辑 `data/friends.toml`：
+
+```toml
+[[friends]]
+name = "站点名"
+url  = "https://example.com"
+desc = "一句话介绍"
+```
+
 ## 本地预览（可选）
 
 ```bash
@@ -44,9 +65,16 @@ hugo server
 ├── content/
 │   ├── posts/             # 👈 文章放这里
 │   ├── about.md           # 关于页
-│   └── archives.md        # 归档页
+│   ├── archives.md        # 归档页
+│   ├── shuoshuo.md        # 说说页
+│   ├── guestbook.md       # 留言板
+│   ├── friends.md         # 友情链接
+│   └── search.md          # 搜索页
+├── data/
+│   ├── shuoshuo.toml      # 👈 说说内容
+│   └── friends.toml       # 👈 友情链接
+├── static/images/         # 背景图 bg.png、头像 avatar.png
 ├── layouts/               # 页面模板
-├── static/                # 图片等静态资源（如 favicon）
 └── .github/workflows/     # 自动部署配置
 ```
 

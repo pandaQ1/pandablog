@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1 class="page-title glass">友情链接</h1>
+<div class="friends-grid">
+  {{ range hugo.Data.friends.friends }}
+  <a class="friend-card glass" href="{{ .url }}" target="_blank" rel="noopener">
+    <div class="friend-name">{{ .name }}</div>
+    <p class="friend-desc">{{ .desc }}</p>
+  </a>
+  {{ else }}
+  <article class="post-card glass"><p>还没有友链，在 <code>data/friends.toml</code> 里添加吧。</p></article>
+  {{ end }}
+</div>
+{{ end }}
