@@ -1,0 +1,38 @@
+baseURL = "https://pandaq1.github.io/pandablog/"
+defaultContentLanguage = "zh-cn"
+defaultContentLanguageInSubdir = false
+title = "Panda Blog"
+copyright = "© 2026 Panda Blog"
+pagination.pagerSize = 10
+enableEmoji = true
+enableGitInfo = false
+summaryLength = 70
+
+[taxonomies]
+  tag = "tags"
+
+[menus]
+  [[menus.main]]
+    name = "首页"
+    pageRef = "/"
+    weight = 10
+  [[menus.main]]
+    name = "归档"
+    pageRef = "/archives/"
+    weight = 20
+  [[menus.main]]
+    name = "关于"
+    pageRef = "/about/"
+    weight = 30
+
+[params]
+  description = "Panda 的个人博客 - 记录生活与技术"
+  author = "Panda"
+  # 开启 giscus 评论（详见 README，先到 https://giscus.app 生成参数）
+  # [params.giscus]
+  #   repo = "pandaQ1/pandablog"
+  #   repoId = "你的仓库ID"
+  #   category = "Announcements"
+  #   categoryId = "你的分类ID"
+  #   mapping = "pathname"
+  #   theme = "preferred_color_scheme"

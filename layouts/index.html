@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>你好，我是 {{ .Site.Params.author }} 🐼</h1>
+  <p>{{ .Site.Params.description }}</p>
+</section>
+
+{{ $pages := where .Site.RegularPages "Type" "posts" }}
+{{ $paginator := .Paginate $pages }}
+{{ range $paginator.Pages }}
+<article class="post-card">
+  <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <div class="post-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    {{ with .GetTerms "tags" }}
+      {{ range . }}<a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+    {{ end }}
+    <span>{{ .ReadingTime }} 分钟阅读</span>
+  </div>
+  <p class="post-summary">{{ .Summary | plainify }}</p>
+</article>
+{{ else }}
+<p>还没有文章，去 <code>content/posts/</code> 里创建你的第一篇 Markdown 吧！</p>
+{{ end }}
+
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="pagination">
+  {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">← 上一页</a>{{ end }}
+  <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+  {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">下一页 →</a>{{ end }}
+</nav>
+{{ end }}
+{{ end }}

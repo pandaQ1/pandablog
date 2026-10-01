@@ -1,0 +1,15 @@
+{{ define "main" }}
+<h1 class="page-title">{{ .Title }}</h1>
+{{ range .Pages }}
+<article class="post-card">
+  <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <div class="post-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    {{ range .GetTerms "tags" }}<a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+  </div>
+  <p class="post-summary">{{ .Summary | plainify }}</p>
+</article>
+{{ else }}
+<p>这里暂时没有内容。</p>
+{{ end }}
+{{ end }}
