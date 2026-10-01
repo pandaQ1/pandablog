@@ -1,5 +1,7 @@
 <section class="hero-banner">
-  <h1>{{ .Site.Params.heroTitle | default .Site.Title }}</h1>
-  {{ with .Site.Params.slogan }}<p>{{ . }}</p>{{ end }}
+  <div class="hero-text">
+    <h1>{{ .Site.Params.heroTitle | default .Site.Title }}</h1>
+    {{ with .Site.Params.slogan }}<p>{{ . }}</p>{{ end }}
+  </div>
   <a class="hero-arrow" href="#posts" aria-label="向下浏览">⌄</a>
 </section>

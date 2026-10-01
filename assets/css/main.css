@@ -142,31 +142,44 @@ img { max-width: 100%; }
 .hero-banner {
   max-width: 1080px;
   width: calc(100% - 36px);
+  min-height: calc(100vh - 70px);
+  min-height: calc(100svh - 70px);
   margin: 0 auto;
-  padding: 58px 20px 22px;
+  padding: 0 20px 24px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   color: #fff;
 }
+.hero-text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 24px;
+}
 .hero-banner h1 {
-  margin: 0 0 10px;
-  font-family: Georgia, "Palatino Linotype", "Songti SC", "Times New Roman", serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 14px;
+  font-family: "Palatino Linotype", Georgia, "Songti SC", "Times New Roman", "STSong", serif;
+  font-size: clamp(2.1rem, 5.2vw, 3.2rem);
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   color: #fff;
-  text-shadow: 0 0 28px rgba(255, 255, 255, .34), 0 0 6px rgba(255, 255, 255, .25), 0 2px 10px rgba(0, 0, 0, .55);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .75), 0 0 20px rgba(0, 0, 0, .55);
 }
 .hero-banner p {
   margin: 0;
-  font-size: .98rem;
-  letter-spacing: 1.2px;
-  color: #e3efff;
-  text-shadow: 0 0 14px rgba(126, 183, 255, .65), 0 0 4px rgba(255, 255, 255, .5), 0 1px 4px rgba(0, 0, 0, .5);
+  font-size: .97rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #e6f0ff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .7), 0 0 12px rgba(120, 175, 255, .55);
 }
 .hero-arrow {
-  display: inline-block;
-  margin-top: 24px;
-  font-size: 1.7rem;
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 1.8rem;
   line-height: 1;
   color: #fff;
   opacity: .9;
@@ -389,8 +402,7 @@ img { max-width: 100%; }
   .sidebar { position: static; order: 2; }
   .content { order: 1; }
   .site-nav a { padding: 4px 8px; font-size: .85rem; }
-  .hero-banner { padding: 46px 16px 26px; }
-  .hero-banner h1 { font-size: 1.9rem; }
-  .hero-banner p { font-size: .95rem; }
-  .hero-arrow { margin-top: 26px; }
+  .hero-banner { padding: 0 16px 16px; }
+  .hero-banner h1 { font-size: 1.9rem; letter-spacing: 1.2px; }
+  .hero-banner p { font-size: .86rem; letter-spacing: 2px; }
 }
