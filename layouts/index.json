@@ -4,12 +4,17 @@
   {{- range .GetTerms "tags" -}}
     {{- $tags = printf "%s #%s" $tags .LinkTitle -}}
   {{- end -}}
+  {{- $cats := "" -}}
+  {{- range .GetTerms "categories" -}}
+    {{- $cats = printf "%s %s" $cats .LinkTitle -}}
+  {{- end -}}
   {{- $index = $index | append (dict
       "title" .Title
       "url" .RelPermalink
       "date" (.Date.Format "2006-01-02")
       "summary" (.Summary | plainify | truncate 120)
       "tags" (trim $tags " ")
+      "categories" (trim $cats " ")
   ) -}}
 {{- end -}}
 {{- $index | jsonify -}}

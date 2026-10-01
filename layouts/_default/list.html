@@ -4,10 +4,11 @@
 <article class="post-card glass">
   <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <div class="post-meta">
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-    {{ range .GetTerms "tags" }}<a class="tag" href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
+    <span><span class="icon">📅</span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></span>
+    {{ with .GetTerms "tags" }}<span><span class="icon">🏷</span>{{ range . }}<a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</span>{{ end }}
+    <span><span class="icon">✏️</span>{{ .WordCount }} 字</span>
   </div>
-  <p class="post-summary">{{ .Summary | plainify }}</p>
+  <p class="post-summary">{{ .Summary | plainify | truncate 110 }}</p>
 </article>
 {{ else }}
 <article class="post-card glass"><p>这里暂时没有内容。</p></article>

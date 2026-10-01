@@ -2,6 +2,7 @@
 title = '你好，世界！这是我的第一篇文章'
 date = 2026-10-01T10:00:00+08:00
 tags = ['开始']
+categories = ['随笔']
 draft = false
 +++
 

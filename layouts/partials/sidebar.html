@@ -1,0 +1,29 @@
+<aside class="sidebar">
+  {{ with .Site.Params.announcement }}
+  <section class="widget glass">
+    <h3 class="widget-title">公告</h3>
+    <p>{{ . }}</p>
+  </section>
+  {{ end }}
+
+  {{ with .Site.Params.notice }}
+  <section class="widget glass">
+    <h3 class="widget-title">{{ $.Site.Params.noticeTitle | default "公告栏" }}</h3>
+    <p>{{ . }}</p>
+  </section>
+  {{ end }}
+
+  <section class="widget glass">
+    <h3 class="widget-title">搜索</h3>
+    <form class="side-search" action="{{ "search/" | relURL }}" method="get">
+      <input type="search" name="q" placeholder="搜索…" aria-label="搜索">
+      <button type="submit" title="搜索">🔍</button>
+    </form>
+  </section>
+
+  <section class="widget glass profile">
+    <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}">
+    <div class="profile-name">{{ .Site.Params.author }}</div>
+    {{ with .Site.Params.signature }}<div class="profile-sign">{{ . }}</div>{{ end }}
+  </section>
+</aside>

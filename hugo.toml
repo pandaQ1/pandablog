@@ -9,6 +9,7 @@ summaryLength = 70
 
 [taxonomies]
   tag = "tags"
+  category = "categories"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -19,12 +20,12 @@ summaryLength = 70
     pageRef = "/"
     weight = 10
   [[menus.main]]
-    name = "说说"
-    pageRef = "/shuoshuo/"
-    weight = 20
-  [[menus.main]]
     name = "留言板"
     pageRef = "/guestbook/"
+    weight = 20
+  [[menus.main]]
+    name = "说说"
+    pageRef = "/shuoshuo/"
     weight = 30
   [[menus.main]]
     name = "归档"
@@ -40,13 +41,18 @@ summaryLength = 70
     weight = 60
 
 [params]
-  description = "Panda 的个人博客 - 记录生活与技术"
-  author = "Panda"
+  description = "记录自己技术增长过程的博客"
+  author = "panda"
+  signature = "Actions speak louder than words"
   avatar = "images/avatar.png"
-  background = "images/bg.png"
-  # 社交链接（不需要的可删除）
+  background = "images/bg.jpg"
+  # 侧边栏「公告」卡片
+  announcement = "记录自己技术增长过程的博客"
+  # 侧边栏「公告栏」卡片
+  noticeTitle = "panda公告栏"
+  notice = "No pains, no gains."
+  # 导航栏 bilibili 入口（填入你的 B站主页地址即可显示）
   # bilibili = "https://space.bilibili.com/你的ID"
-  # github = "https://github.com/pandaQ1"
   # 开启 giscus 评论（详见 README，先到 https://giscus.app 生成参数）
   # [params.giscus]
   #   repo = "pandaQ1/pandablog"
