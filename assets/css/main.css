@@ -135,7 +135,8 @@ img { max-width: 100%; }
   color: var(--accent);
   background: rgba(255, 122, 158, .14);
 }
-.search-btn { font-size: .95rem; }
+.search-btn { display: inline-flex; align-items: center; padding: 4px 10px; }
+.search-btn svg { display: block; }
 
 /* ---------- 首页 hero ---------- */
 .hero-banner {
@@ -211,12 +212,17 @@ img { max-width: 100%; }
 }
 .side-search input:focus { border-color: var(--accent); }
 .side-search button {
-  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  color: var(--text-secondary);
   border: 1px solid var(--glass-border);
   border-radius: 8px;
   background: var(--glass-bg-strong);
   cursor: pointer;
 }
+.side-search button:hover { color: var(--accent); border-color: var(--accent); }
+.side-search button svg { display: block; }
 .profile { text-align: center; }
 .profile img {
   width: 84px;
