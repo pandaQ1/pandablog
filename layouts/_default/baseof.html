@@ -6,7 +6,8 @@
   <div class="bg-mask"></div>
   <div class="page">
     {{- partial "header.html" . -}}
-    <div class="container page-body">
+    {{- if .IsHome }}{{ partial "hero.html" . }}{{ end -}}
+    <div class="container page-body" {{ if .IsHome }}id="posts"{{ end }}>
       {{- partial "sidebar.html" . -}}
       <main class="content">
         {{- block "main" . }}{{ end -}}

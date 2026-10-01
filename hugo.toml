@@ -43,6 +43,9 @@ summaryLength = 70
 [params]
   description = "记录自己技术增长过程的博客"
   author = "panda"
+  # 首页顶部大标题与口号
+  heroTitle = "panda`s blog"
+  slogan = "Life is coding, I will debug it."
   signature = "Actions speak louder than words"
   avatar = "images/avatar.png"
   background = "images/bg.jpg"

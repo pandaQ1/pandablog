@@ -137,6 +137,43 @@ img { max-width: 100%; }
 }
 .search-btn { font-size: .95rem; }
 
+/* ---------- 首页 hero ---------- */
+.hero-banner {
+  max-width: 1080px;
+  width: calc(100% - 36px);
+  margin: 18px auto 0;
+  padding: 76px 20px 40px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .5), 0 0 2px rgba(0, 0, 0, .35);
+}
+.hero-banner h1 {
+  margin: 0 0 12px;
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.hero-banner p {
+  margin: 0;
+  font-size: 1.06rem;
+  opacity: .96;
+  letter-spacing: .5px;
+}
+.hero-arrow {
+  display: inline-block;
+  margin-top: 44px;
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+  opacity: .92;
+  animation: hero-bounce 1.8s ease-in-out infinite;
+}
+.hero-arrow:hover { color: #fff; opacity: 1; }
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(9px); }
+}
+
 /* ---------- 侧边栏 ---------- */
 .sidebar { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 78px; }
 .widget {
@@ -343,4 +380,8 @@ img { max-width: 100%; }
   .sidebar { position: static; order: 2; }
   .content { order: 1; }
   .site-nav a { padding: 4px 8px; font-size: .85rem; }
+  .hero-banner { padding: 46px 16px 26px; }
+  .hero-banner h1 { font-size: 1.9rem; }
+  .hero-banner p { font-size: .95rem; }
+  .hero-arrow { margin-top: 26px; }
 }
