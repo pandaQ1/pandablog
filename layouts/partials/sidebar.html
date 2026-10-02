@@ -24,7 +24,7 @@
   </section>
 
   <section class="widget glass profile">
-    <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}">
+    <img src="{{ .Site.Params.avatar | relURL }}?v={{ with os.Stat "static/images/avatar.png" }}{{ .Size }}{{ else }}1{{ end }}" alt="{{ .Site.Params.author }}">
     <div class="profile-name">{{ .Site.Params.author }}</div>
     {{ with .Site.Params.signature }}<div class="profile-sign">{{ . }}</div>{{ end }}
   </section>
