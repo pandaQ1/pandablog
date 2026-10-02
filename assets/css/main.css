@@ -302,13 +302,26 @@ img { max-width: 100%; }
 /* ---------- 文章卡片 ---------- */
 .content { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .post-card {
+  position: relative;
   padding: 18px 22px;
   transition: transform .18s ease, border-color .18s ease;
 }
+/* 含文章标题链接的卡片才显示手型光标 */
+.post-card:has(.post-card-title a) { cursor: pointer; }
 .post-card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .post-card-title { margin: 0 0 8px; font-size: 1.18rem; }
 .post-card-title a { color: var(--text); }
 .post-card-title a:hover { color: var(--accent); }
+/* 整张卡片可点击：用标题链接的伪元素铺满卡片（无需改模板） */
+.post-card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+/* 卡片内的分类/标签链接浮在遮罩之上，仍可单独点击 */
+.post-card .tag { position: relative; z-index: 2; }
 .post-summary { margin: 8px 0 0; color: var(--text-secondary); font-size: .92rem; }
 .post-meta {
   display: flex;
