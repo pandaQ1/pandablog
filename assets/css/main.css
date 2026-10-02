@@ -112,13 +112,18 @@ img { max-width: 100%; }
   height: 74px;
   gap: 12px;
 }
+/* 原站 Argon：≥1700px 视口时导航容器放宽到 1500px */
+@media (min-width: 1700px) {
+  .header-inner { max-width: 1500px; }
+}
 .site-title {
   display: flex;
   align-items: center;
   gap: 9px;
+  margin-right: 1rem;
   font-family: echo, sans-serif;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--text);
   white-space: nowrap;
   /* 原站 .navbar-brand：彩虹渐变文字 */
@@ -134,7 +139,8 @@ img { max-width: 100%; }
   border: 1px solid var(--glass-border);
   object-fit: cover;
 }
-.site-nav { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; justify-content: flex-end; }
+/* 原站结构：logo 最左 → 菜单紧跟 logo 靠左排 → 搜索按钮 ml-auto 顶到最右 */
+.site-nav { display: flex; align-items: center; gap: 0; flex: 1 1 auto; flex-wrap: wrap; justify-content: flex-start; }
 .site-nav a {
   display: inline-flex;
   align-items: center;
@@ -152,7 +158,7 @@ img { max-width: 100%; }
   color: var(--accent);
   background: rgba(255, 122, 158, .14);
 }
-.site-nav a.search-btn { padding: 6px 10px; }
+.site-nav a.search-btn { padding: 6px 10px; margin-left: auto; }
 .search-btn svg { display: block; }
 
 /* ---------- 导航栏：对齐原站 Argon navbar-absolute（透明悬浮，滚动后白条） ---------- */
@@ -444,6 +450,7 @@ img { max-width: 100%; }
   .page-body { grid-template-columns: 1fr; }
   .sidebar { position: static; order: 2; }
   .content { order: 1; }
+  .site-title { font-size: 1.25rem; margin-right: .4rem; }
   .site-nav a { padding: 4px 10px; font-size: .9rem; }
   .hero-banner { padding: 0 16px 8px; }
   .banner-title { font-size: 2.1em; }
