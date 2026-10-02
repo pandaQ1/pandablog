@@ -138,14 +138,39 @@ img { max-width: 100%; }
 .search-btn { display: inline-flex; align-items: center; padding: 4px 10px; }
 .search-btn svg { display: block; }
 
-/* ---------- 首页 hero ---------- */
+/* ---------- 导航栏：对齐原站 Argon navbar-absolute（透明悬浮，滚动后毛玻璃） ---------- */
+.site-header {
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.site-header .site-title,
+.site-header .site-nav a,
+.site-header .search-btn { color: #fff; }
+.site-header .site-title:hover,
+.site-header .site-nav a:hover { color: var(--accent); }
+.site-header .nav-avatar { border-color: rgba(255, 255, 255, .45); }
+.site-header.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-color: var(--glass-border);
+  box-shadow: var(--shadow);
+}
+.site-header.scrolled .site-title,
+.site-header.scrolled .site-nav a,
+.site-header.scrolled .search-btn { color: var(--text); }
+.site-header.scrolled .site-title:hover,
+.site-header.scrolled .site-nav a:hover { color: var(--accent); }
+
+/* ---------- 首页 hero（按原站 Argon 主题 style.css 888-987 行复刻） ---------- */
 .hero-banner {
   max-width: 1080px;
   width: calc(100% - 36px);
-  min-height: calc(100vh - 70px);
-  min-height: calc(100svh - 70px);
+  min-height: calc(100vh - 64px);
+  min-height: calc(100svh - 64px);
   margin: 0 auto;
-  padding: 0 20px 24px;
+  padding: 0 20px 10px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -157,39 +182,33 @@ img { max-width: 100%; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 24px;
 }
 .hero-banner h1 {
-  margin: 0 0 14px;
-  font-family: "Palatino Linotype", Georgia, "Songti SC", "Times New Roman", "STSong", serif;
-  font-size: clamp(2.1rem, 5.2vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: 2px;
+  margin: 0 0 10px;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 1px;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .75), 0 0 20px rgba(0, 0, 0, .55);
+  text-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 }
 .hero-banner p {
   margin: 0;
-  font-size: .97rem;
-  font-weight: 300;
-  letter-spacing: 3px;
-  color: #e6f0ff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, .7), 0 0 12px rgba(120, 175, 255, .55);
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #fff;
+  opacity: .9;
 }
 .hero-arrow {
   flex: 0 0 auto;
   align-self: center;
-  font-size: 1.8rem;
-  line-height: 1;
+  line-height: 0;
   color: #fff;
-  opacity: .9;
-  animation: hero-bounce 1.8s ease-in-out infinite;
+  opacity: .95;
+  transition: opacity .3s ease;
 }
+.hero-arrow svg { display: block; }
 .hero-arrow:hover { color: #fff; opacity: 1; }
-@keyframes hero-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(9px); }
-}
 
 /* ---------- 侧边栏 ---------- */
 .sidebar { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 78px; }
@@ -402,7 +421,7 @@ img { max-width: 100%; }
   .sidebar { position: static; order: 2; }
   .content { order: 1; }
   .site-nav a { padding: 4px 8px; font-size: .85rem; }
-  .hero-banner { padding: 0 16px 16px; }
-  .hero-banner h1 { font-size: 1.9rem; letter-spacing: 1.2px; }
-  .hero-banner p { font-size: .86rem; letter-spacing: 2px; }
+  .hero-banner { padding: 0 16px 8px; }
+  .hero-banner h1 { font-size: 1.45rem; }
+  .hero-banner p { font-size: 14px; }
 }
