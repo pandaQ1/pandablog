@@ -1,15 +1,18 @@
 <header class="site-header" id="site-header">
   <div class="header-inner">
-    <a href="{{ .Site.BaseURL | relLangURL }}" class="site-title">
-      <img src="{{ .Site.Params.avatar | relURL }}" alt="avatar" class="nav-avatar">
-      <span>{{ .Site.Title }}</span>
-    </a>
+    <a href="{{ .Site.BaseURL | relLangURL }}" class="site-title">{{ .Site.Params.brand | default .Site.Title }}</a>
     <nav class="site-nav">
-      {{ range .Site.Menus.main }}
+      {{ range where .Site.Menus.main "Weight" "le" 30 }}
       <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}class="active"{{ end }}>{{ .Name }}</a>
       {{ end }}
       {{ with .Site.Params.bilibili }}
-      <a href="{{ . }}" target="_blank" rel="noopener">bilibili个人主页</a>
+      <a href="{{ . }}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.6 2.6 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+        bilibili个人主页
+      </a>
+      {{ end }}
+      {{ range where .Site.Menus.main "Weight" "ge" 40 }}
+      <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}class="active"{{ end }}>{{ .Name }}</a>
       {{ end }}
       <a href="{{ "search/" | relURL }}" class="search-btn" title="搜索" aria-label="搜索">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5l-4.2-4.2"></path></svg>

@@ -21,5 +21,36 @@
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+  // 首页 banner 逐字打字效果（原站 Argon banner data-interval="100"）
+  (function () {
+    var titleEl = document.querySelector('.banner-title-inner');
+    var subEl = document.querySelector('.banner-subtitle');
+    if (!titleEl) return;
+    var tText = titleEl.getAttribute('data-text') || '';
+    var sText = subEl ? (subEl.getAttribute('data-text') || '') : '';
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      titleEl.textContent = tText;
+      if (subEl) subEl.textContent = sText;
+      return;
+    }
+    var INTERVAL = 100, i = 0, j = 0;
+    var typeTitle = function () {
+      if (i <= tText.length) {
+        titleEl.textContent = tText.slice(0, i);
+        i++;
+        setTimeout(typeTitle, INTERVAL);
+      } else if (sText) {
+        setTimeout(typeSub, 250);
+      }
+    };
+    var typeSub = function () {
+      if (j <= sText.length) {
+        subEl.textContent = sText.slice(0, j);
+        j++;
+        setTimeout(typeSub, INTERVAL);
+      }
+    };
+    typeTitle();
+  })();
 })();
 </script>

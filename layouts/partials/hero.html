@@ -1,7 +1,9 @@
 <section class="hero-banner">
   <div class="hero-text">
-    <h1>{{ .Site.Params.heroTitle | default .Site.Title }}</h1>
-    {{ with .Site.Params.slogan }}<p>{{ . }}</p>{{ end }}
+    <h1 class="banner-title">
+      <span class="banner-title-inner" data-text="{{ .Site.Params.heroTitle | default .Site.Title }}">&nbsp;</span>
+      {{ with .Site.Params.slogan }}<span class="banner-subtitle" data-text="{{ . }}">&nbsp;</span>{{ end }}
+    </h1>
   </div>
   <a class="hero-arrow" href="#posts" aria-label="向下浏览">
     <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5l6 6 6-6"></path></svg>

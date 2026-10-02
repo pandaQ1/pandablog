@@ -29,6 +29,13 @@
   }
 }
 
+/* ---------- 原站自定义字体 echo（来自原站 @font-face，已镜像到本地） ---------- */
+@font-face {
+  font-family: echo;
+  src: url("../fonts/echo.woff2") format('woff2');
+  font-display: swap;
+}
+
 /* ---------- 基础 ---------- */
 * { box-sizing: border-box; }
 html, body { background-color: var(--bg); }
@@ -109,10 +116,16 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 9px;
-  font-weight: 700;
-  font-size: 1.02rem;
+  font-family: echo, sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
   color: var(--text);
   white-space: nowrap;
+  /* 原站 .navbar-brand：彩虹渐变文字 */
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(94.75deg, rgb(60, 172, 247) 0%, rgb(131, 101, 253) 43.66%, rgb(255, 141, 112) 64.23%, rgb(247, 201, 102) 83.76%, rgb(172, 143, 100) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 .nav-avatar {
   width: 32px;
@@ -123,18 +136,23 @@ img { max-width: 100%; }
 }
 .site-nav { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; justify-content: flex-end; }
 .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text-secondary);
-  padding: 5px 11px;
+  padding: 6px 1.4em;
   border-radius: 8px;
-  font-size: .9rem;
+  font-family: echo, sans-serif;
+  font-size: 1rem;
   transition: all .15s ease;
   white-space: nowrap;
 }
+.site-nav a svg { display: block; }
 .site-nav a:hover, .site-nav a.active {
   color: var(--accent);
   background: rgba(255, 122, 158, .14);
 }
-.search-btn { display: inline-flex; align-items: center; padding: 4px 10px; }
+.site-nav a.search-btn { padding: 6px 10px; }
 .search-btn svg { display: block; }
 
 /* ---------- 导航栏：对齐原站 Argon navbar-absolute（透明悬浮，滚动后白条） ---------- */
@@ -150,15 +168,16 @@ img { max-width: 100%; }
 .site-header .site-nav a:hover { color: var(--accent); }
 .site-header .nav-avatar { border-color: rgba(255, 255, 255, .45); }
 .site-header.scrolled {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px) saturate(1.4);
-  -webkit-backdrop-filter: blur(12px) saturate(1.4);
-  border-bottom-color: var(--glass-border);
-  box-shadow: var(--shadow);
+  /* 原站 html.toolbar-blur #navbar-main：rgba(themecolor, .65) + blur(16px) */
+  background: rgba(33, 33, 33, .65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255, 255, 255, .08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .22);
 }
 .site-header.scrolled .site-title,
 .site-header.scrolled .site-nav a,
-.site-header.scrolled .search-btn { color: var(--text); }
+.site-header.scrolled .search-btn { color: #fff; }
 .site-header.scrolled .site-title:hover,
 .site-header.scrolled .site-nav a:hover { color: var(--accent); }
 
@@ -182,21 +201,27 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: center;
 }
-.hero-banner h1 {
-  margin: 0 0 10px;
-  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
-  font-size: 1.8rem;
-  font-weight: 300;
-  letter-spacing: 1px;
+.banner-title {
+  margin: 0;
+  font-family: echo, sans-serif;
+  font-size: 3em;
+  font-weight: 400;
   color: #fff;
   text-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 }
-.hero-banner p {
-  margin: 0;
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: #fff;
-  opacity: .9;
+.banner-title-inner { display: inline; }
+/* 原站 .banner-subtitle：echo 字体 + 35px + 彩虹渐变文字 */
+.banner-subtitle {
+  display: block;
+  margin-top: 6px;
+  font-family: echo, sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.3;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(94.75deg, rgb(60, 172, 247) 0%, rgb(131, 101, 253) 43.66%, rgb(255, 141, 112) 64.23%, rgb(247, 201, 102) 83.76%, rgb(172, 143, 100) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 .hero-arrow {
   flex: 0 0 auto;
@@ -419,8 +444,8 @@ img { max-width: 100%; }
   .page-body { grid-template-columns: 1fr; }
   .sidebar { position: static; order: 2; }
   .content { order: 1; }
-  .site-nav a { padding: 4px 8px; font-size: .85rem; }
+  .site-nav a { padding: 4px 10px; font-size: .9rem; }
   .hero-banner { padding: 0 16px 8px; }
-  .hero-banner h1 { font-size: 1.45rem; }
-  .hero-banner p { font-size: 14px; }
+  .banner-title { font-size: 2.1em; }
+  .banner-subtitle { font-size: 16px; }
 }

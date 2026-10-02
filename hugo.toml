@@ -43,9 +43,11 @@ summaryLength = 70
 [params]
   description = "记录自己技术增长过程的博客"
   author = "panda"
-  # 首页顶部大标题与口号
-  heroTitle = "panda`s blog"
-  slogan = "Life is coding, I will debug it."
+  # 导航栏品牌文字（原站 navbar-brand 显示为 panda，彩虹渐变）
+  brand = "panda"
+  # 首页顶部大标题与口号（与原站 banner 文案一致）
+  heroTitle = "panda‘s blog"
+  slogan = "Life is a coding,I will debug it."
   signature = "Actions speak louder than words"
   avatar = "images/avatar.png"
   background = "images/bg.jpg"
@@ -54,8 +56,8 @@ summaryLength = 70
   # 侧边栏「公告栏」卡片
   noticeTitle = "panda公告栏"
   notice = "No pains, no gains."
-  # 导航栏 bilibili 入口（填入你的 B站主页地址即可显示）
-  # bilibili = "https://space.bilibili.com/你的ID"
+  # 导航栏 bilibili 入口（原站地址）
+  bilibili = "https://space.bilibili.com/100025796"
   # 开启 giscus 评论（详见 README，先到 https://giscus.app 生成参数）
   # [params.giscus]
   #   repo = "pandaQ1/pandablog"
