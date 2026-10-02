@@ -14,5 +14,12 @@
   var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 8); };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+  // hero 箭头点击平滑滚到文章区（不影响滚轮速度）
+  document.querySelectorAll('.hero-arrow').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
 })();
 </script>
