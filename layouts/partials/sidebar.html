@@ -1,31 +1,60 @@
 <aside class="sidebar">
   {{ with .Site.Params.announcement }}
-  <section class="widget glass">
-    <h3 class="widget-title">公告</h3>
-    <p>{{ . }}</p>
-  </section>
+  <div class="widget glass widget-announcement">
+    <div class="announcement-body">
+      <div class="announcement-title">公告</div>
+      <div class="announcement-content">{{ . }}</div>
+    </div>
+  </div>
   {{ end }}
 
-  {{ with .Site.Params.notice }}
-  <section class="widget glass">
-    <h3 class="widget-title">{{ $.Site.Params.noticeTitle | default "公告栏" }}</h3>
-    <p>{{ . }}</p>
-  </section>
-  {{ end }}
-
-  <section class="widget glass">
-    <h3 class="widget-title">搜索</h3>
-    <form class="side-search" action="{{ "search/" | relURL }}" method="get">
-      <input type="search" name="q" placeholder="搜索…" aria-label="搜索">
-      <button type="submit" title="搜索" aria-label="搜索">
+  <div class="widget glass leftbar-part1">
+    <div class="leftbar-banner">
+      <span class="leftbar-banner-title">{{ .Site.Title }}</span>
+      {{ with .Site.Params.notice }}<span class="leftbar-banner-subtitle">{{ . }}</span>{{ end }}
+    </div>
+    <ul class="leftbar-menu">
+      {{ range .Site.Menus.main }}
+      <li class="leftbar-menu-item{{ if $.IsMenuCurrent "main" . }} current{{ end }}"><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+      {{ with .Site.Params.bilibili }}
+      <li class="leftbar-menu-item"><a href="{{ . }}" target="_blank" rel="noopener">bilibili个人主页</a></li>
+      {{ end }}
+    </ul>
+    <div class="leftbar-search-button">
+      <form class="leftbar-search-btn" action="{{ "search/" | relURL }}" method="get">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5l-4.2-4.2"></path></svg>
-      </button>
-    </form>
-  </section>
+        <span class="leftbar-search-label">搜索</span>
+        <input type="search" name="q" placeholder="搜索什么..." aria-label="搜索">
+      </form>
+    </div>
+  </div>
 
-  <section class="widget glass profile">
-    <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}">
-    <div class="profile-name">{{ .Site.Params.author }}</div>
-    {{ with .Site.Params.signature }}<div class="profile-sign">{{ . }}</div>{{ end }}
-  </section>
+  <div class="widget glass leftbar-part2">
+    <div class="leftbar-overview">
+      <div class="leftbar-avatar" style="background-image: url('{{ .Site.Params.avatar | relURL }}')"></div>
+      <h6 class="leftbar-author-name">{{ .Site.Params.author }}</h6>
+      {{ with .Site.Params.signature }}<h6 class="leftbar-author-description">{{ . }}</h6>{{ end }}
+      <nav class="site-state">
+        <div class="site-state-item">
+          <a href="{{ "archives/" | relURL }}">
+            <span class="site-state-item-count">{{ where .Site.RegularPages "Type" "posts" | len }}</span>
+            <span class="site-state-item-name">文章</span>
+          </a>
+        </div>
+        <div class="site-state-item">
+          <a href="{{ "categories/" | relURL }}">
+            <span class="site-state-item-count">{{ len .Site.Taxonomies.categories }}</span>
+            <span class="site-state-item-name">分类</span>
+          </a>
+        </div>
+        <div class="site-state-item">
+          <a href="{{ "tags/" | relURL }}">
+            <span class="site-state-item-count">{{ len .Site.Taxonomies.tags }}</span>
+            <span class="site-state-item-name">标签</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
 </aside>
