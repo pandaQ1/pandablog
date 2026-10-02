@@ -59,9 +59,10 @@ summaryLength = 70
   # 导航栏 bilibili 入口（原站地址）
   bilibili = "https://space.bilibili.com/100025796"
   # 开启 giscus 评论（详见 README，先到 https://giscus.app 生成参数）
+  # repoId 已查好，还差 categoryId（开启 Discussions 并装好 giscus App 后到 giscus.app 获取）
   # [params.giscus]
   #   repo = "pandaQ1/pandablog"
-  #   repoId = "你的仓库ID"
+  #   repoId = "R_kgDOU32uYw"
   #   category = "Announcements"
   #   categoryId = "你的分类ID"
   #   mapping = "pathname"
