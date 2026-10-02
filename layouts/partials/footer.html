@@ -82,5 +82,23 @@
       if (!form.contains(e.target)) closeBox();
     });
   })();
+  // 移动端汉堡菜单
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var nav = document.getElementById('site-nav');
+    if (!toggle || !nav) return;
+    var setOpen = function (open) {
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') setOpen(false);
+    });
+    window.addEventListener('resize', function () { if (window.innerWidth > 900) setOpen(false); });
+  })();
 })();
 </script>

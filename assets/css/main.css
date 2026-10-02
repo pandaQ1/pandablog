@@ -158,6 +158,31 @@ img { max-width: 100%; }
   color: var(--accent);
   background: transparent;
 }
+/* 移动端汉堡按钮（桌面隐藏） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 34px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
 /* ---------- 导航搜索：默认只显示图标，点击后向左展开输入框 ----------
    （对齐原站 Argon #navbar_search_input_container：width 0 → 200px，
     过渡 all .5s cubic-bezier(.4,0,0,1)） */
@@ -498,10 +523,41 @@ img { max-width: 100%; }
   .page-body { grid-template-columns: 1fr; }
   .sidebar { position: static; order: 2; }
   .content { order: 1; }
-  .site-title { font-size: 1.25rem; margin-right: .4rem; }
-  .site-nav a { padding: 4px 10px; font-size: .9rem; }
-  .nav-search.open input { width: 120px; }
-  .hero-banner { padding: 0 16px 8px; }
+  .header-inner { height: 60px; padding: 0 12px; gap: 8px; }
+  .site-title { font-size: 1.3rem; margin-right: 0; }
+  .nav-toggle { display: flex; margin-left: auto; }
+  /* 菜单收进汉堡下拉面板 */
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin-left: 0;
+    padding: 8px 12px 14px;
+    background: rgba(18, 20, 24, .94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, .4);
+  }
+  .site-nav.open { display: flex; }
+  .site-nav a { padding: 11px 12px; font-size: .95rem; }
+  .nav-search {
+    margin: 8px 0 0;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .14);
+  }
+  .nav-search input { flex: 1 1 auto; width: auto; padding: 8px 10px 8px 2px; opacity: 1; }
+  .nav-search.open { background: rgba(255, 255, 255, .14); }
+  .hero-banner {
+    padding: 0 16px 8px;
+    min-height: calc(100vh - 60px);
+    min-height: calc(100svh - 60px);
+  }
   .banner-title { font-size: 2.1em; }
   .banner-subtitle { font-size: 16px; }
 }
