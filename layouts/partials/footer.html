@@ -52,5 +52,35 @@
     };
     typeTitle();
   })();
+  // 导航搜索：点图标向左展开输入框，回车跳搜索页，Esc / 点外部收起
+  (function () {
+    var form = document.getElementById('nav-search');
+    if (!form) return;
+    var toggle = form.querySelector('.nav-search-toggle');
+    var input = form.querySelector('input');
+    var openBox = function () {
+      form.classList.add('open');
+      setTimeout(function () { input.focus(); }, 60);
+    };
+    var closeBox = function () {
+      if (!input.value.trim()) form.classList.remove('open');
+    };
+    toggle.addEventListener('click', function () {
+      if (!form.classList.contains('open')) openBox();
+      else if (input.value.trim()) form.submit();
+      else input.focus();
+    });
+    input.addEventListener('blur', closeBox);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.keyCode === 27) {
+        input.value = '';
+        form.classList.remove('open');
+        input.blur();
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (!form.contains(e.target)) closeBox();
+    });
+  })();
 })();
 </script>

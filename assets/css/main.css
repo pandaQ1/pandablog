@@ -158,8 +158,43 @@ img { max-width: 100%; }
   color: var(--accent);
   background: transparent;
 }
-.site-nav a.search-btn { padding: 6px 10px; margin-left: auto; }
-.search-btn svg { display: block; }
+/* ---------- 导航搜索：默认只显示图标，点击后向左展开输入框 ----------
+   （对齐原站 Argon #navbar_search_input_container：width 0 → 200px，
+    过渡 all .5s cubic-bezier(.4,0,0,1)） */
+.nav-search {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  border-radius: 8px;
+  transition: background-color .5s cubic-bezier(.4, 0, 0, 1);
+}
+.nav-search-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 9px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.nav-search-toggle svg { display: block; }
+.nav-search-toggle:hover { color: var(--accent); }
+.nav-search input {
+  width: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  background: transparent;
+  color: inherit;
+  font-family: echo, sans-serif;
+  font-size: .92rem;
+  outline: none;
+  transition: width .5s cubic-bezier(.4, 0, 0, 1), opacity .35s ease, padding .5s cubic-bezier(.4, 0, 0, 1);
+}
+.nav-search input::placeholder { color: rgba(255, 255, 255, .5); }
+.nav-search.open { background: rgba(255, 255, 255, .16); }
+.nav-search.open input { width: 200px; padding: 6px 10px 6px 2px; opacity: 1; }
 
 /* ---------- 导航栏：对齐原站 Argon navbar-absolute（透明悬浮，滚动后白条） ---------- */
 .site-header {
@@ -169,7 +204,7 @@ img { max-width: 100%; }
 }
 .site-header .site-title,
 .site-header .site-nav a,
-.site-header .search-btn { color: #fff; }
+.site-header .nav-search { color: #fff; }
 .site-header .site-title:hover,
 .site-header .site-nav a:hover { color: var(--accent); }
 .site-header .nav-avatar { border-color: rgba(255, 255, 255, .45); }
@@ -183,7 +218,7 @@ img { max-width: 100%; }
 }
 .site-header.scrolled .site-title,
 .site-header.scrolled .site-nav a,
-.site-header.scrolled .search-btn { color: #fff; }
+.site-header.scrolled .nav-search { color: #fff; }
 .site-header.scrolled .site-title:hover,
 .site-header.scrolled .site-nav a:hover { color: var(--accent); }
 
@@ -465,6 +500,7 @@ img { max-width: 100%; }
   .content { order: 1; }
   .site-title { font-size: 1.25rem; margin-right: .4rem; }
   .site-nav a { padding: 4px 10px; font-size: .9rem; }
+  .nav-search.open input { width: 120px; }
   .hero-banner { padding: 0 16px 8px; }
   .banner-title { font-size: 2.1em; }
   .banner-subtitle { font-size: 16px; }
